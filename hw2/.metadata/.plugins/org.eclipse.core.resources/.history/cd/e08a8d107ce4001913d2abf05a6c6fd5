@@ -1,0 +1,7 @@
+package stackMac;
+
+public class StackTooShortException extends StackMachineException {
+	public StackTooShortException(String errorMessage) {
+		super(errorMessage);
+	}
+}

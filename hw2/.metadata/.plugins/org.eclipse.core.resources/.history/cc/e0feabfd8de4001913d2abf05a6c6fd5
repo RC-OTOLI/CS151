@@ -1,0 +1,5 @@
+package stackMac;
+
+public interface Command {
+  void execute() throws StackMachineException;
+}

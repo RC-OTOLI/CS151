@@ -9,11 +9,11 @@ public class Pop implements Command {
 	@Override
 	public void execute() throws EmptyStackException {
 		try {
-			StackMachine.stack.pop();
+			System.out.println("Popped: " + StackMachine.stack.pop());
+			
 		}
-		catch(EmptyStackException s) {
-			throw s;
+		catch(EmptyStackException e) {
+			throw e;
 		}
 	}
-
 }

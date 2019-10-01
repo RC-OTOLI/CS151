@@ -1,17 +1,16 @@
 package stackMac;
 
-public class Push<T> implements Command {
-
+public class Push implements Command {
+	
 	Double arg;
 	
-	public Push(T arg) {
+	public Push(Double arg) {
 		super();
-		this.arg = (Double) arg;
+		this.arg = arg;
 	}
 	
 	@Override
 	public void execute(){
 		StackMachine.stack.push(arg);
 	}
-
 }

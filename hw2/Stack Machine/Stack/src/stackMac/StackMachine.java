@@ -1,8 +1,8 @@
 package stackMac;
 
 public class StackMachine {
-	//This stack machine will only work for values that can be cast to doubles
-	public static GenericStack<Double> stack;
+	
+	public static GenericStack<Double> stack = new GenericStack<Double>();
 	
 	public static void execute(Program p) {
 		//Make sure the stack is clear before running a new program
@@ -15,7 +15,7 @@ public class StackMachine {
 			try {
 				c.execute();
 			}
-			//Thrown by Add, Sub, Mul, Div, Pop 
+			//Thrown by Pop 
 			catch(EmptyStackException s) {
 				System.out.println(s.getMessage());
 			}
@@ -27,7 +27,7 @@ public class StackMachine {
 			catch(DivideByZeroException s) {
 				System.out.println(s.getMessage());
 			}
-			//Thrown by push (in this context)
+			//TODO clear up: Thrown by execute?
 			catch(SyntaxError s) {
 				System.out.println(s.getMessage());
 			}

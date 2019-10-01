@@ -1,0 +1,25 @@
+package stackMac;
+
+public class Add implements Command {
+
+	private Double arg1;
+	private Double arg2;
+	
+	
+	public Add() {
+		super();
+	}
+	
+	
+	@Override
+	public void execute() throws StackTooShortException {
+		try {
+			arg1 = StackMachine.stack.pop();
+			arg2 = StackMachine.stack.pop();
+		}
+		catch(StackEmptyException e) {
+			throw new StackTooShortException("Add");
+		}
+	}
+
+}
