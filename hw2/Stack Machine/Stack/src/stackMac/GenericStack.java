@@ -10,7 +10,7 @@ class GenericStack<T> {
 		return genericStack.add(t);
 	}
 	
-	public T pop() throws StackMachineException {
+	public T pop() throws EmptyStackException {
 		T element;
 		try {
 			element = genericStack.remove(genericStack.size()-1);
