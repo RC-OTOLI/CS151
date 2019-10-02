@@ -16,12 +16,7 @@ public class ShootStrategy extends Strategy {
 	@Override
 	public void strike(Gladiator other) {
 		//Placeholder damage algorithm for Shoot
-		int otherHealth = other.getHealth();
-		int ownerHealth = owner.getHealth();
-		
-		int damage = Utilities.RNGDamage(ownerHealth/2);
-		
-		other.setHealth(otherHealth-damage);
+		super.strike(other);
 		
 		System.out.println(
 			owner.getName() +

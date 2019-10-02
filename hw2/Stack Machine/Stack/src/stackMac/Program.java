@@ -8,4 +8,10 @@ public class Program {
 	public boolean add(Command c) {
 		return commands.add(c);
 	}
+	
+	public void execute() throws StackMachineException {
+		for(Command c: commands) {
+			c.execute();
+		}
+	}
 }

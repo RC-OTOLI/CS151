@@ -51,11 +51,11 @@ public class Gladiator {
 	
 	//Reduce the health of other gladiators
 	public void attack(Gladiator other) {
-		//Disable attack abilities if "dead"
-		//if(this.health > 0) {
+		//Disable attack abilities if either Gladiator is 'dead'
+		if(this.health > 0 || !(other.getHealth() == 0)) {
 			this.strategy.strike(other);
 			System.out.println(other.getName() + "'s health = " + other.getHealth());
-		//}
+		}
 	}
 	
 	

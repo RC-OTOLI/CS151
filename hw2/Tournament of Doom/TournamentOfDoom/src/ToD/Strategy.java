@@ -7,6 +7,14 @@ public abstract class Strategy {
 		this.owner = owner;
 	}
 	
-	public abstract void strike(Gladiator other);
+	public void strike(Gladiator other) {
+		//Placeholder default damage algorithm
+		int otherHealth = other.getHealth();
+		int ownerHealth = owner.getHealth();
+		
+		int damage = Utilities.RNGDamage(ownerHealth/5);
+		
+		other.setHealth(otherHealth-damage);
+	}
 	
 }

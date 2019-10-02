@@ -8,12 +8,6 @@ public class Pop implements Command {
 	
 	@Override
 	public void execute() throws EmptyStackException {
-		try {
-			System.out.println("Popped: " + StackMachine.stack.pop());
-			
-		}
-		catch(EmptyStackException e) {
-			throw e;
-		}
+			System.out.println(StackMachine.stack.pop() + " was popped!");
 	}
 }

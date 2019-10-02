@@ -34,6 +34,5 @@ public class Tournament {
 }
 
 /*
- * Current damage algorithm based on attacker's health HEAVILY favors whoever attacks 1st.
- * Gladiators can attack while at 0 health by default meaning that it relies on implementation to limit ability to attack 
+ * Default damage algorithm (based on attacker's health) HEAVILY favors whoever attacks 1st.
  */

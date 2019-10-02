@@ -40,15 +40,41 @@ public class TestSM {
 		p1.add(new Add());
 		// now execute
 		StackMachine.execute(p1);
-		
 	}
 	
+	public static void divby0() {
+		Program p2 = new Program();
+		p2.add(new Push(0.0));
+		p2.add(new Push(-9.9));
+		p2.add(new Div());
+		StackMachine.execute(p2);
+	}
+	
+	public static void empty() {
+		Program p4 = new Program();
+		p4.add(new Push(9.0));
+		p4.add(new Pop());
+		p4.add(new Pop());
+		StackMachine.execute(p4);
+	}
+	
+	public static void shortStack() {
+		Program p5 = new Program();
+		p5.add(new Push(9.0));
+		p5.add(new Div());
+		StackMachine.execute(p5);
+	}
+
 	public static void main(String[] args) {
 		test1(2.0); // [17.0]
 		test1(5.0); // [191.0]
 
 		test0(2.0); // [17.0]
 		test0(4.0); // [77]
+		
+		//divby0();
+		//empty();
+		shortStack();
 	}
 
 }

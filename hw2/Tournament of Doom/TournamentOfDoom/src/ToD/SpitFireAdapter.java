@@ -22,12 +22,7 @@ public class SpitFireAdapter extends Strategy {
 	@Override
 	public void strike(Gladiator other) {
 		//Placeholder damage algorithm for SpitFire
-		int otherHealth = other.getHealth();
-		int ownerHealth = owner.getHealth();
-		
-		int damage = Utilities.RNGDamage(ownerHealth/2);
-		
-		other.setHealth(otherHealth-damage);
+		super.strike(other);
 		
 		adaptee.fight(owner, other);
 	}

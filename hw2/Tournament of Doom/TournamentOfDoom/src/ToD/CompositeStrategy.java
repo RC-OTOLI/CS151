@@ -10,6 +10,10 @@ public class CompositeStrategy extends Strategy {
 	
 	@Override
 	public void strike(Gladiator other) {
+		//In the case where CompositeStrategy.strike() does as much damage as a generic strike
+		//super.strike(other)
+		
+		//In the case where each sub-strategy has full damage capabilities
 		//Execute the sub-strategies in order
 		for (Strategy s: children)
 			s.strike(other);
