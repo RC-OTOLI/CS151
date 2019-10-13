@@ -1,0 +1,16 @@
+/Add.class
+/Command.class
+/Div.class
+/DivideByZeroException.class
+/EmptyStackException.class
+/GenericStack.class
+/Mul.class
+/Pop.class
+/Program.class
+/Push.class
+/StackMachine.class
+/StackMachineException.class
+/StackTooShortException.class
+/Sub.class
+/SyntaxError.class
+/TestSM.class
