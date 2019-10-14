@@ -1,7 +1,7 @@
 package presentation;
 
 import business.*;
-//import framework.*; /*for future implementation*/
+import framework.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,110 +20,136 @@ public class ControlPanel extends JPanel {
 	public ControlPanel(Brick b) {
 		this.brick = b;
 		controller = new BrickController(b);
-		setLayout(new GridLayout(3,2));
+		
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		//(1, 1): "Set Height"
-		JPanel p = new JPanel();
-		p.setLayout(new GridBagLayout());
-		p.add(new JLabel("Set Height"));
-		this.add(p);
+		//2 columns, 4 rows
+		setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
-		//(1, 2): {brick.height}
-		p = new JPanel();
-		p.setLayout(new GridBagLayout());
+		//(0-1, 0): Title
+		c.gridx = 0;		//Starting coordinates
+		c.gridy = 0;
+		c.weighty = .2;
+		c.gridwidth = 2;	//Title spans the panel
+		add(new JLabel("Dimensions (in inches)"), c);
+		
+		//(1, 0): "Set Height"
+		c.gridy++;			//Next row
+		c.gridwidth = 1;	//Reset span to 1 cell
+		this.add(new JLabel("Set Height: "), c);
+		
+		//(1, 1): {brick.height}
 		height = new JTextField(brick.getHeight().toString(), TEXT_FIELD_SIZE);
 		height.addActionListener(controller);
-		p.add(height);
-		this.add(p);
+		c.gridx++;			//next column
+		this.add(height, c);
 		
-		//(2, 1): brick width
-		p = new JPanel();
-		p.setLayout(new GridBagLayout());
-		p.add(new JLabel("Set Width"));
-		this.add(p);
+		//(0, 2): brick width
+		c.gridx--;			//previous column
+		c.gridy++;			//next row
+		this.add(new JLabel("Set Width: "), c);
 		
-		//(2, 2): {brick.width}
-		p = new JPanel();
-		p.setLayout(new GridBagLayout());
+		//(1, 2): {brick.width}
 		width = new JTextField(brick.getWidth().toString(), TEXT_FIELD_SIZE);
 		width.addActionListener(controller);
-		p.add(width);
-		this.add(p);
+		c.gridx++;			//next column
+		this.add(width, c);
 		
-		//(3, 1): brick Depth
-		p = new JPanel();
-		p.setLayout(new GridBagLayout());
-		p.add(new JLabel("Set Depth"));
-		this.add(p);
+		//(0, 3): brick Depth
+		c.gridx--;			//previous column
+		c.gridy++;			//next row
+		this.add(new JLabel("Set Depth: "), c);
 		
-		//(3, 2): {brick.Depth}
-		p = new JPanel();
-		p.setLayout(new GridBagLayout());
+		//(1, 3): {brick.Depth}
 		depth = new JTextField(brick.getDepth().toString(), TEXT_FIELD_SIZE);
 		depth.addActionListener(controller);
-		p.add(depth);
-		this.add(p);		
+		c.gridx++;			//next column
+		this.add(depth, c);
+		
+		//(0-1, 4): bottom row spacer
+		c.gridx--;
+		c.gridy++;
+		this.add(new JPanel(), c);
 	}
+	
+	
 	
 	public class BrickController implements ActionListener {
 
 		private Brick brick;
-		private Double lastGoodHeight, lastGoodWidth, lastGoodDepth;
 		
 		public BrickController(Brick model) {
 			super();
 			brick = model;
-			lastGoodHeight = model.getHeight();
-			lastGoodWidth = model.getWidth();
-			lastGoodDepth = model.getDepth();
 		}
 		
 		@Override
+		//Only changes parameters if inputs are valid.
+		//Otherwise, it restores the fields to their last good input
 		public void actionPerformed(ActionEvent ae) {
-			// TODO Auto-generated method stub
-			//String cmd = ae.getActionCommand();
+
 			JTextField sourceField = (JTextField)ae.getSource();
+			
+			//Height alteration
 			if(ae.getSource() == height) {
 				try {
+					//Edge case of accidental double/float casting in text field needs to be handled here
+					if(height.getText().toLowerCase().contains("d") || height.getText().toLowerCase().contains("f")) 
+						throw new NumberFormatException();
+					
 					Double h = Double.valueOf(height.getText());
-					if(h <= 0 ) throw new NonPositiveException("");
 					brick.setHeight(h);
-					lastGoodHeight = h;
+					
 				} catch(NumberFormatException e) {
-					sourceField.setText(lastGoodHeight.toString());
-					JOptionPane.showMessageDialog(null, "Dimensions must be numeric");
+					sourceField.setText(brick.getHeight().toString());
+					JOptionPane.showMessageDialog(null, "Dimensions must be numeric", "Number Format Exception", JOptionPane.INFORMATION_MESSAGE);
+					
 				} catch(NonPositiveException e) {
-					sourceField.setText(lastGoodHeight.toString());
-					JOptionPane.showMessageDialog(null, "Dimensions must be non-zero and possitive");
+					sourceField.setText(brick.getHeight().toString());
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Invalid Dimension", JOptionPane.INFORMATION_MESSAGE);
+					
 				}
 			}
+			
+			//Width alteration
 			else if(ae.getSource() == width) {
 				try {
+					//Edge case of accidental double/float casting in text field needs to be handled here
+					if(width.getText().toLowerCase().contains("d") || width.getText().toLowerCase().contains("f")) 
+						throw new NumberFormatException();
 					Double w = Double.valueOf(width.getText());
-					if(w <= 0 ) throw new NonPositiveException("");
 					brick.setWidth(w);
-					lastGoodWidth = w;
+					
 				} catch(NumberFormatException e) {
-					sourceField.setText(lastGoodWidth.toString());
-					JOptionPane.showMessageDialog(null, "Dimensions must be numeric");
+					sourceField.setText(brick.getWidth().toString());
+					JOptionPane.showMessageDialog(null, "Dimensions must be numeric", "Number Format Exception", JOptionPane.INFORMATION_MESSAGE);
+					
 				} catch(NonPositiveException e) {
-					sourceField.setText(lastGoodWidth.toString());
-					JOptionPane.showMessageDialog(null, "Dimensions must be non-zero and possitive");
+					sourceField.setText(brick.getWidth().toString());
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Invalid Dimension", JOptionPane.INFORMATION_MESSAGE);
+					
 				}
 			}
+			
+			//Depth alteration
 			else if(ae.getSource() == depth) {
 				try {
+					//Edge case of accidental double/float casting in text field needs to be handled here
+					if(depth.getText().toLowerCase().contains("d") || depth.getText().toLowerCase().contains("f")) 
+						throw new NumberFormatException();
+					
 					Double d = Double.valueOf(depth.getText());
-					if(d <= 0 ) throw new NonPositiveException("");
 					brick.setDepth(d);
-					lastGoodDepth = d;
+					
 				} catch(NumberFormatException e) {
-					sourceField.setText(lastGoodDepth.toString());
-					JOptionPane.showMessageDialog(null, "Dimensions must be numeric");
+					sourceField.setText(brick.getDepth().toString());
+					JOptionPane.showMessageDialog(null, "Dimensions must be numeric", "Number Format Exception", JOptionPane.INFORMATION_MESSAGE);
+					
 				} catch(NonPositiveException e) {
-					sourceField.setText(lastGoodDepth.toString());
-					JOptionPane.showMessageDialog(null, "Dimensions must be non-zero and possitive");
+					sourceField.setText(brick.getDepth().toString());
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Invalid Dimension", JOptionPane.INFORMATION_MESSAGE);
+					
 				}
 			}
 		}

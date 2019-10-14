@@ -1,0 +1,11 @@
+package presentation;
+
+import business.Brick;
+
+public class BrickControllerParameter {
+	public Brick model;
+
+	public BrickControllerParameter(Brick model) {
+		this.model = model;
+	}
+}

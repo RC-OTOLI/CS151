@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="business.Brick"/>
+<fullyQualifiedTypeName name="java.awt.geom.Rectangle2D"/>
+<fullyQualifiedTypeName name="java.awt.geom.Rectangle2D.Double"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="java.awt.Graphics2D"/>
+<fullyQualifiedTypeName name="java.awt.Graphics"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+</qualifiedTypeNameHistroy>

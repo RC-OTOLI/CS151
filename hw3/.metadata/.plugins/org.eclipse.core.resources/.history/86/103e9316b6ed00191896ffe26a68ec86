@@ -1,0 +1,25 @@
+package presentation;
+
+import business.*;
+
+import java.awt.*;
+import javax.swing.*;
+
+@SuppressWarnings("serial")
+public class SideView extends BrickView {
+	
+	public SideView(Brick b) {
+		super(b);
+		setBorder(BorderFactory.createLineBorder(Color.black));
+		JPanel p = new JPanel();
+		p.add(new JLabel("Top View"));
+		this.add(p);
+	}
+	
+	@Override
+	public void paintComponent(Graphics gc) {
+		Graphics2D gc2d = (Graphics2D)gc;
+		myRectangle topView = new myRectangle((int)(20*model.getDepth()), (int)(20*model.getHeight()));
+		topView.draw(gc2d);
+	}
+}

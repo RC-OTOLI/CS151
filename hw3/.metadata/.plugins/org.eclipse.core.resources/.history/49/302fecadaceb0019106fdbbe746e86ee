@@ -1,0 +1,35 @@
+import java.util.Observable;
+
+public class Brick extends Observable {
+	private Double height = 2.25d;
+	private Double width = 8d;
+	private Double length = 3.625d;
+	
+	public Brick() {
+		super();
+	}
+	
+	public Double getHeight() {
+		return height;
+	}
+
+	public Double getWidth() {
+		return width;
+	}
+
+	public Double getLength() {
+		return length;
+	}
+	
+	public void setHeight(Double h) {
+		this.height = h;
+	}
+	
+	public void setWidth(Double w) {
+		this.width = w;
+	}
+	
+	public void setLength(Double l) {
+		this.length = l;
+	}	
+}

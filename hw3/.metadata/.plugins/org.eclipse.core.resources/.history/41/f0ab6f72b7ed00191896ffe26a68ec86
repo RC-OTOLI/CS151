@@ -1,0 +1,23 @@
+package presentation;
+
+import business.*;
+
+import java.awt.*;
+import javax.swing.*;
+
+@SuppressWarnings("serial")
+public class FrontView extends BrickView {
+	
+	public FrontView(Brick b) {
+		super(b);
+		p.add(new JLabel("Front View"));
+		this.add(p);
+	}
+	
+	@Override
+	public void paintComponent(Graphics gc) {
+		Graphics2D gc2d = (Graphics2D)gc;
+		myRectangle topView = new myRectangle((int)(20*model.getWidth()), (int)(20*model.getHeight()));
+		topView.draw(gc2d);
+	}
+}

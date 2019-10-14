@@ -1,0 +1,52 @@
+package presentation;
+import javax.swing.*;
+import java.awt.*;
+
+import business.*;
+import framework.*; /*for future implementation*/
+
+/*
+public class BrickFrame {
+
+	public static final int FRAME_WIDTH = 700;
+	public static final int FRAME_HEIGHT = 500;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		JFrame frame = new JFrame();
+		frame.setSize(FRAME_WIDTH, FRAME_WIDTH);
+		frame.setTitle("Brick CAD");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.add(new BrickPanel());
+		frame.setVisible(true);
+	}
+
+}
+*/
+
+@SuppressWarnings("unused")
+public class BrickFrame extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private Brick model;
+	private BrickPanel brickPanel;
+
+
+	public BrickFrame() {
+		model = new Brick();
+		brickPanel = new BrickPanel(model);
+		Container cp = getContentPane();
+		cp.add(brickPanel);
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Brick CAD");
+		setSize(3000, 1000);
+		pack();
+	}
+
+	public static void main(String[] args) {
+		BrickFrame brickFrame = new BrickFrame();
+		brickFrame.setVisible(true);
+	}
+}

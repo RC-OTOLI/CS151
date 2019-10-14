@@ -4,9 +4,6 @@ import business.*;
 //import framework.*; /*for future implementation*/
 
 import java.awt.*;
-import java.util.Observable;
-
-import javax.swing.*;
 
 public class TopView extends BrickView {
 	
@@ -14,21 +11,18 @@ public class TopView extends BrickView {
 
 	public TopView(Brick b) {
 		super(b);
-		JPanel p = new JPanel();
-		p.add(new JLabel("Top View"));
-		this.add(p);
+		//Title space
+		title.setText("Top View");
 	}
 	
 	@Override
+	//Draws rectangle in the bottom left corner
 	public void paintComponent(Graphics gc) {
 		Graphics2D gc2d = (Graphics2D)gc;
-		myRectangle topView = new myRectangle((int)(20*model.getWidth()), (int)(20*model.getDepth()));
+		myRectangle topView = new myRectangle(
+								32.0, getHeight()-32-20*model.getDepth(),
+				 25*model.getWidth(), 25*model.getDepth());
 		topView.draw(gc2d);
 	}
 	
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		this.repaint();
-	}
 }

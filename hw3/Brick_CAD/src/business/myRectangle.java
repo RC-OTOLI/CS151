@@ -7,15 +7,11 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 public class myRectangle {
-	private int width, height;
+
 	private Rectangle2D.Double view;
-	private static final int BUFFER_TOP = 32, BUFFER_LEFT = 10;
 	
-	public myRectangle(int w, int h) {
-		this.width = w;
-		this.height = h;
-		
-		view = new Rectangle2D.Double(BUFFER_LEFT, BUFFER_TOP, BUFFER_LEFT+width, BUFFER_TOP+height);
+	public myRectangle(Double xc, Double yc, Double w, Double h) {
+		view = new Rectangle2D.Double(xc, yc, w, h);
 	}
 	
 	public void draw(Graphics2D gc) {

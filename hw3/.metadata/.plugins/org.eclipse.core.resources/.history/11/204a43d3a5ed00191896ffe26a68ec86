@@ -1,0 +1,7 @@
+@SuppressWarnings("serial")
+public class SideView extends BrickView {
+	
+	public SideView(Brick b) {
+		super(b);
+	}
+}

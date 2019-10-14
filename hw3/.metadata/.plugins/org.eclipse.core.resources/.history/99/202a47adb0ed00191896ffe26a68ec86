@@ -1,0 +1,10 @@
+package presentation;
+import business.*;
+
+@SuppressWarnings("serial")
+public class FrontView extends BrickView {
+	
+	public FrontView(Brick b) {
+		super(b);
+	}
+}

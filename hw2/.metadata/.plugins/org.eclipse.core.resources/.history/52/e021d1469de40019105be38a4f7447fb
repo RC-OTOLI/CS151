@@ -1,0 +1,46 @@
+package stackMac;
+
+public class StackMachine {
+	
+	public static GenericStack<Double> stack = new GenericStack<Double>();
+	
+	public static void execute(Program p) {
+		
+		//Make sure the stack is clear before running a new program
+		stack.clear();
+		
+		//Exceptions caught and handled at this level
+		//All exception handlers are placeholders for now
+		try {
+			p.execute();
+		}
+		//Thrown by Pop 
+		catch(EmptyStackException s) {
+			System.out.println(s.getMessage());
+		}
+		//Thrown by Add, Sub, Mul, Div
+		catch(StackTooShortException s) {
+			System.out.println(s.getMessage());
+		}
+		//Thrown by Div
+		catch(DivideByZeroException s) {
+			System.out.println(s.getMessage());
+		}
+		//TODO clear up: Thrown by execute?
+		catch(SyntaxError s) {
+			System.out.println(s.getMessage();
+			s.printStackTrace();
+		}
+		//Thrown if any other command-based error
+		catch(StackMachineException s) {
+			System.out.println(s.getMessage());
+		}
+		//For all other exceptions
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		System.out.println(stack);
+	}
+	
+}

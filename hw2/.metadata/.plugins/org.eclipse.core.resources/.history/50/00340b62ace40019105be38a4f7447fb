@@ -1,0 +1,20 @@
+package ToD;
+
+public abstract class Strategy {
+	protected Gladiator owner;
+	
+	public void setOwner(Gladiator owner) {
+		this.owner = owner;
+	}
+	
+	public void strike(Gladiator other) {
+		//Placeholder damage algorithm for Stab
+		int otherHealth = other.getHealth();
+		int ownerHealth = owner.getHealth();
+		
+		int damage = Utilities.RNGDamage(ownerHealth/2);
+		
+		other.setHealth(otherHealth-damage);
+	}
+	
+}

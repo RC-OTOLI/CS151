@@ -1,0 +1,26 @@
+package presentation;
+import business.*;
+
+import javax.swing.JPanel;
+import java.awt.*;
+
+public class BrickPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Brick model = new Brick();
+	private BrickView topView = new TopView(model);
+	private BrickView frontView = new FrontView(model);
+	private BrickView sideView = new SideView(model);
+	private JPanel controlPanel = new ControlPanel(model);
+	
+	public BrickPanel() {
+		setLayout(new GridLayout(2,2));
+		this.add(controlPanel);
+		this.add(topView);
+		this.add(frontView);
+		this.add(sideView);
+	}
+}

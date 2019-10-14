@@ -1,0 +1,22 @@
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JComponent;
+
+@SuppressWarnings("serial")
+public class BrickView extends JComponent implements Observer {
+	
+	protected Brick brick;
+	
+	public BrickView(Brick b) {
+		this.brick = b;
+		brick.addObserver(this);
+	}
+	
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
