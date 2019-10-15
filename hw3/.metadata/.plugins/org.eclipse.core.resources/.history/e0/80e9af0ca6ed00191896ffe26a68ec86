@@ -1,8 +1,0 @@
-package presentation;
-@SuppressWarnings("serial")
-public class FrontView extends BrickView {
-	
-	public FrontView(Brick b) {
-		super(b);
-	}
-}

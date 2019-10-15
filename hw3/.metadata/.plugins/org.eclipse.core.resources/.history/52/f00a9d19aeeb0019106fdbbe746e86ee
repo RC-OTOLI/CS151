@@ -1,5 +1,0 @@
-import javax.swing.JPanel;
-
-public class BrickPanel extends JPanel {
-	private Brick model;
-}
