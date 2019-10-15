@@ -20,7 +20,7 @@ public class TopView extends BrickView {
 	public void paintComponent(Graphics gc) {
 		Graphics2D gc2d = (Graphics2D)gc;
 		myRectangle topView = new myRectangle(
-								32.0, getHeight()-32-20*model.getDepth(),
+								32.0, getHeight()-32-25*model.getDepth(),
 				 25*model.getWidth(), 25*model.getDepth());
 		topView.draw(gc2d);
 	}
